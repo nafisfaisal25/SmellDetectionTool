@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.zip.ZipException;
@@ -23,6 +25,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import ExploreFiles.Main;
 import zip.UnzipUtility;
 
 
@@ -112,7 +115,7 @@ public class FileUploadHandler extends HttpServlet {
                         u.unzip(filePath, extractedFolderName);
                         
                         
-                        
+                        Main.main();
                         
                         /*
                         request.setAttribute("message",

@@ -101,69 +101,73 @@
   <button class="tablinks" onclick="openCity(event, 'Ref')">Refactoring Suggestion</button>
 </div>
 
-<div id="Smell" class="tabcontent container">
-  <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Detected Smell</th>
-      <th scope="col">CSV</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Brain Method</td>
-      <td><button class="btn"><i class="fa fa-download"></i> Download</button></td>
-    </tr>
-	<tr>
-      <th scope="row">2</th>
-      <td>Feature Envy</td>
-      <td><button class="btn"><i class="fa fa-download"></i> Download</button></td>
-    </tr>
-	<tr>
-      <th scope="row">3</th>
-      <td>God Class</td>
-      <td><button class="btn"><i class="fa fa-download"></i> Download</button></td>
-    </tr>
-	<tr>
-      <th scope="row">4</th>
-      <td>Data Class</td>
-      <td><button class="btn"><i class="fa fa-download"></i> Download</button></td>
-    </tr>
-	<tr>
-      <th scope="row">5</th>
-      <td>Duplicated Code</td>
-      <td><button class="btn"><i class="fa fa-download"></i> Download</button></td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<form method="get" >
+	<div id="Smell" class="tabcontent container">
+	  <table class="table">
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Detected Smell</th>
+	      <th scope="col">CSV</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <th scope="row">1</th>
+	      <td>Brain Method</td>
+	      <td><button type="submit" formaction="brain_method" class="btn"><i class="fa fa-download"></i> Download</button></td>
+	    </tr>
+		<tr>
+	      <th scope="row">2</th>
+	      <td>Feature Envy</td>
+	      <td><button type="submit" formaction="feature_envy" class="btn"><i class="fa fa-download"></i> Download</button></td>
+	    </tr>
+		<tr>
+	      <th scope="row">3</th>
+	      <td>God Class</td>
+	      <td><button type="submit" formaction="god_class" class="btn"><i class="fa fa-download"></i> Download</button></td>
+	    </tr>
+		<tr>
+	      <th scope="row">4</th>
+	      <td>Data Class</td>
+	      <td><button type="submit" formaction="data_class" class="btn"><i class="fa fa-download"></i> Download</button></td>
+	    </tr>
+		<tr>
+	      <th scope="row">5</th>
+	      <td>Duplicated Code</td>
+	      <td><button type="submit" formaction="duplicated_code" class="btn"><i class="fa fa-download"></i> Download</button></td>
+	    </tr>
+	  </tbody>
+	</table>
+	</div>
+	
+</form>
 
-<div id="Ref" class="tabcontent">
-  <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Refactoring Suggestion</th>
-      <th scope="col">CSV</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Brain Method</td>
-      <td><button class="btn"><i class="fa fa-download"></i> Download</button></td>
-    </tr>
-	<tr>
-      <th scope="row">2</th>
-      <td>Feature Envy</td>
-      <td><button class="btn"><i class="fa fa-download"></i> Download</button></td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
+<form method="get">
+	<div id="Ref" class="tabcontent">
+	  <table class="table">
+	  <thead class="thead-dark">
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Refactoring Suggestion</th>
+	      <th scope="col">CSV</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <th scope="row">1</th>
+	      <td>Brain Method</td>
+	      <td><button type="submit" formaction="suggest_brain_method" class="btn"><i class="fa fa-download"></i> Download</button></td>
+	    </tr>
+		<tr>
+	      <th scope="row">2</th>
+	      <td>Feature Envy</td>
+	      <td><button type="submit" formaction="suggest_feature_envy" class="btn"><i class="fa fa-download"></i> Download</button></td>
+	    </tr>
+	  </tbody>
+	</table>
+	</div>
+</form>
 
     </div>
   </div>

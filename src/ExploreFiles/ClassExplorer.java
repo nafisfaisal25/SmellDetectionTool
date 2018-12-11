@@ -2,10 +2,10 @@ package ExploreFiles;
 
 import CalculateMetrics.*;
 import Printer.CSVFileGenerator;
+import SmellDetector.BrainMethodDetector;
 import SmellDetector.DataClassDetector;
 import SmellDetector.FeatureEnvyDetector;
 import SmellDetector.GodClassDetector;
-import SmellDetector.LongMethodDetector;
 
 import com.github.javaparser.JavaParser;
 import com.github.javaparser.ast.CompilationUnit;
@@ -42,7 +42,7 @@ public class ClassExplorer {
 	GodClassDetector g=new GodClassDetector();
 	DataClassDetector d=new DataClassDetector();
 	FeatureEnvyDetector f=new FeatureEnvyDetector();
-	LongMethodDetector l=new LongMethodDetector();
+	BrainMethodDetector l=new BrainMethodDetector();
 	
 	
 	public void doOperation(File projectDir) {
@@ -83,7 +83,7 @@ public class ClassExplorer {
     
     public void CreateCSVForFeatureEnvy() {
 		String csvString=f.getCsvString();
-        CSVFileGenerator csv=new CSVFileGenerator("C:\\Users\\DELL\\Desktop\\MetricsTool\\SPL3\\godClassOutput");
+        CSVFileGenerator csv=new CSVFileGenerator("C:\\uploads");
         csv.print(csvString,"/featurEnvy.csv");
 	}
     
@@ -121,8 +121,8 @@ public class ClassExplorer {
     
     public void CreateCSVForLongMethod() {
 		String csvString=l.getCsvString();
-        CSVFileGenerator csv=new CSVFileGenerator("C:\\Users\\DELL\\Desktop\\MetricsTool\\SPL3\\godClassOutput");
-        csv.print(csvString,"/LongMethod.csv");
+        CSVFileGenerator csv=new CSVFileGenerator("C:\\uploads");
+        csv.print(csvString,"/BrainMethod.csv");
 	}
     
     public void detectDataClass(File projectDir) {
@@ -157,7 +157,7 @@ public class ClassExplorer {
     
     public void CreateCSVForDataClass() {
 		String csvString=d.getCsvString();
-        CSVFileGenerator csv=new CSVFileGenerator("C:\\Users\\DELL\\Desktop\\MetricsTool\\SPL3\\godClassOutput");
+        CSVFileGenerator csv=new CSVFileGenerator("C:\\uploads");
         csv.print(csvString,"/dataClass.csv");
 	}
     
@@ -196,7 +196,7 @@ public class ClassExplorer {
 
 	public void CreateCSVForGodClass() {
 		String csvString=g.getCsvString();
-        CSVFileGenerator csv=new CSVFileGenerator("C:\\Users\\DELL\\Desktop\\MetricsTool\\SPL3\\godClassOutput");
+        CSVFileGenerator csv=new CSVFileGenerator("C:\\uploads");
         csv.print(csvString,"/godClass.csv");
 	}
     
