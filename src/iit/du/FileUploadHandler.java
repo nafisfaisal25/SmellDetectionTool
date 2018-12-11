@@ -36,7 +36,7 @@ import zip.UnzipUtility;
 public class FileUploadHandler extends HttpServlet {
    // private final String UPLOAD_DIRECTORY = "C:/uploads";
  // location to store file uploaded
-    private static final String UPLOAD_DIRECTORY = "C:\\uploads";
+    private static final String UPLOAD_DIRECTORY = "c:\\uploads";
  
     // upload settings
     private static final int MEMORY_THRESHOLD   = 1024 * 1024 * 3;  // 3MB
