@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class SuggestFeatureEnvyHandler
  */
-@WebServlet("/suggest_feature_envy")
+@WebServlet("/suggest_feature")
 public class SuggestFeatureEnvyHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,7 +32,7 @@ public class SuggestFeatureEnvyHandler extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("application/octet-stream");
         response.setHeader("Content-Disposition","attachment;filename=feature_envy_suggestion.csv");
-        File file = new File("C:\\uploads\\featureEnvySuggestion.csv");
+        File file = new File("C:\\uploads\\featurEnvySuggestion.csv");
         FileInputStream fileIn = new FileInputStream(file);
         ServletOutputStream out = response.getOutputStream();
 

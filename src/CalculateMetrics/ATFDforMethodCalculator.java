@@ -2,7 +2,9 @@ package CalculateMetrics;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import com.github.javaparser.ast.CompilationUnit;
 import com.github.javaparser.ast.body.MethodDeclaration;
@@ -16,6 +18,7 @@ public class ATFDforMethodCalculator {
 	private int numberOfATFD=0;
 	private Set<String>allClassname;
 	private Set<String>TotalDifferentClassAccessed=new HashSet<>();
+	private Map<String,Integer>numberOfVarAccessed=new TreeMap<>();
 	
 	public ATFDforMethodCalculator(MethodDeclaration method,String className,Set<String>allClassname) {
 		//System.out.println(" * " + declaredClass.getName());
@@ -46,6 +49,11 @@ public class ATFDforMethodCalculator {
 			if(type!=null && !type.equals(className) && allClassname.contains(type)) {
 				numberOfATFD++;
 				TotalDifferentClassAccessed.add(type);
+				if(!numberOfVarAccessed.containsKey(type))
+					numberOfVarAccessed.put(type,1);
+				else {
+					numberOfVarAccessed.put(type,numberOfVarAccessed.get(type)+1);
+				}
 			}
 			
 		}
@@ -70,6 +78,11 @@ public class ATFDforMethodCalculator {
 					if(!x.getReturnType().isVoid()) {
 						numberOfATFD++;
 						TotalDifferentClassAccessed.add(QuilifiedName);
+						if(!numberOfVarAccessed.containsKey(QuilifiedName))
+							numberOfVarAccessed.put(QuilifiedName,1);
+						else {
+							numberOfVarAccessed.put(QuilifiedName,numberOfVarAccessed.get(QuilifiedName)+1);
+						}
 					}
 					
 					//if(!x.getReturnType().isVoid())System.out.println(x.getName());
@@ -87,5 +100,22 @@ public class ATFDforMethodCalculator {
 	public int getTotalDiffererntClassAccessed() {
 		return TotalDifferentClassAccessed.size();
 	}
+	
+	public String getHighestFDP() {
+		int maxValue=-1;
+		for (Object o : numberOfVarAccessed.keySet()) {
+			if(numberOfVarAccessed.get(o)>maxValue)maxValue=numberOfVarAccessed.get(o);
+		}
+		String key=(String) getKeyFromValue(numberOfVarAccessed,maxValue);
+		return key;
+	}
+	public static Object getKeyFromValue(Map hm, Object value) {
+        for (Object o : hm.keySet()) {
+          if (hm.get(o).equals(value)) {
+            return o;
+          }
+        }
+        return null;
+     }
 	
 }

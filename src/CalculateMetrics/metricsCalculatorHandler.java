@@ -31,6 +31,8 @@ import javassist.compiler.ast.Variable;
 
 public class metricsCalculatorHandler {
 	File file;
+	public ArrayList<String>couplinglist=new ArrayList<>();
+
 	
 	public metricsCalculatorHandler(File file) {
 		this.file=file;
@@ -120,7 +122,7 @@ public class metricsCalculatorHandler {
                     	ATFDforMethodCalculator a=new ATFDforMethodCalculator(method,className,allClassName);
                         a.doOperation();
                         list.add((double) a.getATFD());
-                       
+                        couplinglist.add(a.getHighestFDP());
                         //System.out.println("Method Name: " + method.getNameAsString() + "\n" + "ATFD for Method: " + numberOfATFD);
                     }
                 

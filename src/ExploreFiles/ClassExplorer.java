@@ -52,7 +52,7 @@ public class ClassExplorer {
 		//listClasses(projectDir);
 	}
 
-    public void detectFeatureEnvy(File projectDir) {
+public void detectFeatureEnvy(File projectDir) {
     	
     	Map <String, ArrayList<Double>> map=new TreeMap<>();
     	
@@ -60,6 +60,8 @@ public class ClassExplorer {
         	
         	ArrayList<Double>list;
         	ArrayList<String>methodNameList;
+        	ArrayList<String>CouplingList;
+        	
         	
             //System.out.println(path);
             //System.out.println(Strings.repeat("=", path.length()));
@@ -72,9 +74,9 @@ public class ClassExplorer {
             list=handler.LAACalcHandler(allClassName, parser, getPackageName(file)+"."+getClassName(file));
             map.put("LAA", list);
             methodNameList=handler.getMethodNameList(allClassName, parser, getPackageName(file)+"."+getClassName(file));
+            CouplingList=handler.couplinglist;
             
-            
-            f.compareMetricWithThresholad(map,methodNameList,path);
+            f.compareMetricWithThresholad(map,methodNameList,path,CouplingList);
             
             
             
@@ -85,6 +87,9 @@ public class ClassExplorer {
 		String csvString=f.getCsvString();
         CSVFileGenerator csv=new CSVFileGenerator("C:\\uploads");
         csv.print(csvString,"/featurEnvy.csv");
+        String CouplingCsvString=f.getCouplingCsvString();
+        csv=new CSVFileGenerator("C:\\uploads");
+        csv.print(CouplingCsvString,"/featurEnvySuggestion.csv");
 	}
     
     public void detectLongMethod(File projectDir) {

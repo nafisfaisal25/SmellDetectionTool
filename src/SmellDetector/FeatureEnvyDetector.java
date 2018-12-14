@@ -1,5 +1,6 @@
 package SmellDetector;
 
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
@@ -11,6 +12,8 @@ import ExploreFiles.ClassExplorer;
 public class FeatureEnvyDetector {
 	
 	private String csvString = "Full Path,Detected Feature Envy Method,"+"\n";
+	private String suggestionCsvString = "Full Path,Detected Feature Envy Method,Suggested Class,"+"\n";
+	
 
 	public FeatureEnvyDetector() {
 		
@@ -27,20 +30,24 @@ public class FeatureEnvyDetector {
 		classexplorer.CreateCSVForFeatureEnvy();
 	}
 	
-	public void compareMetricWithThresholad(Map<String,ArrayList<Double>> map, ArrayList<String> methodNameList,String path) {
+	public void compareMetricWithThresholad(Map<String,ArrayList<Double>> map, ArrayList<String> methodNameList,String path,ArrayList<String> Couplinglist) {
 		int FEW=4;
 		
 		ArrayList<Double> FDP = null,LAA = null,ATFDForMethod = null;
 		if(map.get("FDP") != null)FDP=map.get("FDP");
 		if(map.get("LAA") != null)LAA=map.get("LAA");
 		if(map.get("ATFDForMethod") != null)ATFDForMethod=map.get("ATFDForMethod");
+
 		
 		for(int i=0;i<FDP.size();i++) {
 			if(FDP.get(i)<=FEW && LAA.get(i)<(1.0/3) && ATFDForMethod.get(i) > FEW ) {
 				//System.out.println(path);
 	            //System.out.println(Strings.repeat("=", path.length()));
 				//System.out.println(methodNameList.get(i));
-				generateCSVString(path, methodNameList.get(i));
+				generateCSVStringForCoupling(path, methodNameList.get(i),Couplinglist.get(i));
+				
+				
+				
 			}
 		}
 
@@ -50,7 +57,17 @@ public class FeatureEnvyDetector {
 		csvString+=path+","+methodName+","+"\n";
 	}
 	
+	private void generateCSVStringForCoupling(String path,String methodName,String className) {
+		suggestionCsvString+=path+","+methodName+","+className +"," +"\n";
+	}
+	
 	public String getCsvString() {
 		return csvString;
 	}
+	
+	public String getCouplingCsvString() {
+		return suggestionCsvString;
+	}
+	
+	
 }
