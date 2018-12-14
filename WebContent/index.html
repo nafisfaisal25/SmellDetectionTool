@@ -40,14 +40,10 @@
     
 <form method="POST" action="upload" enctype="multipart/form-data">
 	<div class="form-group">
-		<div class="input-group input-file" name="Fichier1">
-			<span class="input-group-btn">
-        		<button class="btn btn-default btn-choose" type="button">Choose</button>
-    		</span>
-    		<input type="text" class="form-control" placeholder='Choose a zip file...' required/>
-    		<span class="input-group-btn">
-       			 <button class="btn btn-warning btn-reset" type="button">Reset</button>
-    		</span>
+		<div  name="Fichier1">
+			
+    		<input type="file" class="form-control" placeholder='Choose a zip file...' name="bal" accept=".zip"  required/>
+    		
 		</div>
 	</div>
 	<div class="form-group">
@@ -67,7 +63,7 @@
 <form method="GET" action="git_clone">
 	
 	
-	<input class="textClass" type="text" name="link" placeholder='Enter github link...' required><br><br>
+	<input class="textClass" type="text" name="link" placeholder='Enter github link...' pattern=".*.git" required ><br><br>
 	<div class="form-group">
 		<button type="submit" class="btn btn-lg btn-primary" value="submit">submit</button>
 	</div>

@@ -44,6 +44,7 @@ public class FeatureEnvyDetector {
 				//System.out.println(path);
 	            //System.out.println(Strings.repeat("=", path.length()));
 				//System.out.println(methodNameList.get(i));
+				generateCSVString(path, methodNameList.get(i));
 				generateCSVStringForCoupling(path, methodNameList.get(i),Couplinglist.get(i));
 				
 				

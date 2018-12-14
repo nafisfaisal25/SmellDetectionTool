@@ -32,7 +32,7 @@ public class DuplicatedCodeHandler extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("application/octet-stream");
         response.setHeader("Content-Disposition","attachment;filename=duplicated_code.csv");
-        File file = new File("C:\\uploads\\duplicatedCode.csv");
+        File file = new File("C:\\uploads\\DuplicatedCode.csv");
         FileInputStream fileIn = new FileInputStream(file);
         ServletOutputStream out = response.getOutputStream();
 

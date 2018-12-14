@@ -4,6 +4,7 @@ import java.io.File;
 
 import SmellDetector.BrainMethodDetector;
 import SmellDetector.DataClassDetector;
+import SmellDetector.DuplicatedCodeDetector;
 import SmellDetector.FeatureEnvyDetector;
 import SmellDetector.GodClassDetector;
 
@@ -27,6 +28,7 @@ public class Main {
 		new BrainMethodDetector(projectDir);
 		new DataClassDetector(projectDir);
 		new GodClassDetector(projectDir);
+		new DuplicatedCodeDetector(projectDir);
 		
 		
 
