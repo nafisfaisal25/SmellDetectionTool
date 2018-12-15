@@ -29,7 +29,7 @@ public class GodClassDetector {
 	}
 	
 	public void compareMetricWithThresholad(Map<String,ArrayList<Double>> map,String path,String className) {
-		int FEW=5,VERY_HIGH_wmc=47;
+		int FEW=3,VERY_HIGH_wmc=47;
 		
 		ArrayList<Double> ATFD = null,WMC = null,TCC = null;
 		if(map.get("ATFD") != null)ATFD=map.get("ATFD");

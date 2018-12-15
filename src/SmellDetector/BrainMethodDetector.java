@@ -27,15 +27,16 @@ public class BrainMethodDetector {
 	}
 	
 	public void compareMetricWithThresholad(Map<String,ArrayList<Double>> map, ArrayList<String> methodNameList,String path) {
-		int HIGH_class=65,HIGH_cyclo=4,MANY=7;
+		int HIGH_class=60,HIGH_cyclo=3,MANY=7,SEVERAL=3;
 		
-		ArrayList<Double> LOCForMethod = null,CYCLO = null,NOAV = null;
+		ArrayList<Double> LOCForMethod = null,CYCLO = null,NOAV = null,MAXNESTING=null;
 		if(map.get("LOCForMethod") != null)LOCForMethod=map.get("LOCForMethod");
 		if(map.get("CYCLO") != null)CYCLO=map.get("CYCLO");
 		if(map.get("NOAV") != null)NOAV=map.get("NOAV");
+		if(map.get("MAXNESTING") != null)MAXNESTING=map.get("MAXNESTING");
 		
 		for(int i=0;i<LOCForMethod.size();i++) {
-			if(LOCForMethod.get(i)>HIGH_class && CYCLO.get(i) >=HIGH_cyclo && NOAV.get(i) > MANY ) {
+			if(LOCForMethod.get(i)>HIGH_class && CYCLO.get(i) >=HIGH_cyclo && NOAV.get(i) > MANY && MAXNESTING.get(i) >=SEVERAL) {
 				//System.out.println(path);
 	            //System.out.println(Strings.repeat("=", path.length()));
 				//System.out.println(methodNameList.get(i));

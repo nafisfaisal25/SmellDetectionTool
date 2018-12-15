@@ -28,7 +28,7 @@ public class DataClassDetector {
 	
 	public void compareMetricWithThresholad(Map<String,ArrayList<Double>> map,String path,String className) {
 		//int HIGH_class=65,HIGH_cyclo=4,MANY=7;
-		int FEW=5,HIGH_wmc=31,VERY_HIGH_wmc=47,MANY=8;
+		int FEW=3,HIGH_wmc=31,VERY_HIGH_wmc=47,MANY=7;
 		
 		ArrayList<Double> WOC = null,WMC = null,NOAM = null,NOPA = null;
 		if(map.get("WOC") != null)WOC=map.get("WOC");

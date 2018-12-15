@@ -116,6 +116,13 @@ public void detectFeatureEnvy(File projectDir) {
             map.put("CYCLO", list);
             list=handler.NOAVCalcHandler(allClassName, parser, getPackageName(file)+"."+getClassName(file));
             map.put("NOAV", list);
+            try {
+				list=handler.MaxNestingCalculator(allClassName, parser, getPackageName(file)+"."+getClassName(file));
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            map.put("MAXNESTING", list);
             methodNameList=handler.getMethodNameList(allClassName, parser, getPackageName(file)+"."+getClassName(file));
             
             l.compareMetricWithThresholad(map,methodNameList,path);

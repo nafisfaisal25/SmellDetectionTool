@@ -16,6 +16,7 @@ import com.github.javaparser.ast.body.MethodDeclaration;
 import com.github.javaparser.ast.body.VariableDeclarator;
 import com.github.javaparser.ast.expr.AssignExpr;
 import com.github.javaparser.ast.expr.VariableDeclarationExpr;
+import com.github.javaparser.ast.stmt.BlockStmt;
 import com.github.javaparser.ast.visitor.VoidVisitorAdapter;
 import com.github.javaparser.symbolsolver.JavaSymbolSolver;
 import com.github.javaparser.symbolsolver.model.resolution.TypeSolver;
@@ -32,6 +33,7 @@ import javassist.compiler.ast.Variable;
 public class metricsCalculatorHandler {
 	File file;
 	public ArrayList<String>couplinglist=new ArrayList<>();
+	public double maxCounter;
 
 	
 	public metricsCalculatorHandler(File file) {
@@ -81,6 +83,50 @@ public class metricsCalculatorHandler {
         }
         return list;
 	}
+	
+	public ArrayList<Double> MaxNestingCalculator(Set<String> allClassName, JavaParser parser, String className) throws FileNotFoundException{
+		ArrayList<Double>list=new ArrayList<>();
+		try {
+            new VoidVisitorAdapter<Object>() {
+                @Override
+                public void visit(ClassOrInterfaceDeclaration n, Object arg) {
+                    super.visit(n, arg);
+                    List<MethodDeclaration>methodList=n.getMethods();
+                    
+                    for (MethodDeclaration methodDeclaration : methodList) {
+                    	maxCounter=0;
+                    	List<BlockStmt> s=methodDeclaration.findAll(BlockStmt.class);
+                    	if(s.size()>0)getNestedBlock(s.get(0), arg, 0);
+                    	list.add(maxCounter);
+
+					}
+                }
+            }.visit(JavaParser.parse(file), null);
+        
+        } catch (IOException e) {
+            new RuntimeException(e);
+        }
+        return list;
+	}
+	
+	public void getNestedBlock(BlockStmt n, Object arg ,int counter) {
+    	if(counter>maxCounter)maxCounter=counter;
+
+    	new VoidVisitorAdapter<Object>() {
+
+		    @Override
+		    public void visit(BlockStmt block, Object arg) {
+		    	//System.out.println(counter);		        
+		        List<BlockStmt> list=block.findAll(BlockStmt.class);
+		        if(list.size()==1)return;
+		        for(int i=0;i<list.size();i++) {
+		        	getNestedBlock(list.get(1), arg, counter+1);
+		        }
+		        
+		    }
+    	}.visit(n, arg);;
+    }
+    
 	
 	public ArrayList<Double> ATFDCalcHandler(Set<String>allClassName,JavaParser parser,String className){
 		ArrayList<Double>list=new ArrayList<>();

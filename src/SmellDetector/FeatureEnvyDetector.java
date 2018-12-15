@@ -31,7 +31,7 @@ public class FeatureEnvyDetector {
 	}
 	
 	public void compareMetricWithThresholad(Map<String,ArrayList<Double>> map, ArrayList<String> methodNameList,String path,ArrayList<String> Couplinglist) {
-		int FEW=4;
+		int FEW=3;
 		
 		ArrayList<Double> FDP = null,LAA = null,ATFDForMethod = null;
 		if(map.get("FDP") != null)FDP=map.get("FDP");
